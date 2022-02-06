@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style.css" type="text/css">
+    <title>sign-in Page</title>
+
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <div class="admin-body">
+        <div class="loginbox">
+            <h1>Sign in </h1>
+
+            <form id="signin">
+                <label for="email">Email</label><br>
+                <input type="email" name="email" id="email" placeholder="Enter your email"><br>
+                <label for="pasword">Paswword</label><br>
+                <input type="text" name="password" id="password" placeholder="Enter your password"><br>
+                <input type="submit" value="Sign in " id="login"><br>
+                <!-- <a href="/">Forget Pasword</a> -->
+                <span id="error" style="display: block;color: red;"></span>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js"
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBP9mMrvCqF91cNIWUqiMlrmf03Bdo0kz0",
+            authDomain: "sign-in-page-185df.firebaseapp.com",
+            projectId: "sign-in-page-185df",
+            storageBucket: "sign-in-page-185df.appspot.com",
+            messagingSenderId: "590258348575",
+            appId: "1:590258348575:web:b2e2252381f8d3394bab2a",
+            measurementId: "G-XCGFS70H2Q"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+
+
+
+
+
+        //sign in using their email address and password
+
+        login.addEventListener("click", (event) => {
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    location.href = "/welcone.html";
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    document.getElementById("error").innerHTML = "Error : " + errorCode;
+                });
+        })
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/index.js"></script>
+</body>
+
+</html>
